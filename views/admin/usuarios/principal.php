@@ -1,10 +1,12 @@
+<script src="../../public/js/funciones-navbar.js"></script>
 <script src="../../public/js/funciones-usuarios.js"></script>
 <div class="card">
     <div class="card-header bg-dark text-white">
         <b>Panel de Usuarios</b>
 </div>
 <div class="card-body">
-    <form id="data-user" style="width:500px">
+  <div id="result-form">
+  <form id="data-user" style="width:500px">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Usuario</span>
@@ -30,5 +32,7 @@
         <div style="margin-top:10px"></div>
         <button class="btn btn-primary">Guardar</button>
     </form>
+  </div>
+
     </div>
 </div>
