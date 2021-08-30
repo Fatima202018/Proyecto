@@ -13,8 +13,8 @@
       }
       else
       {
-        $user ="root";
-        $pass ="passw";
+        $user ="poo";
+        $pass ="poo";
         $host ="localhost";
         $bd ="paw";
       }
