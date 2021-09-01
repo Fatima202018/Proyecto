@@ -4,7 +4,7 @@
     public function GetDataUser($user)
     {
         $row = NULL;
-        $modelo = new ConexBD();
+        $modelo = new ConexionBD();
         $conexion = $modelo->get_conexion();
         $sql = "SELECT * FROM usuarios WHERE usuario = :usuario";
         $stm = $conexion->prepare($sql);

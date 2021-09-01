@@ -1,5 +1,5 @@
 <?php
-    include '../../../models/conexion.php'
+    include '../../../models/conexion.php';
 
     $objeto = new ConexionBD();
     $conexion = $objeto->get_conexion();
@@ -14,9 +14,9 @@
     $campos = "usuario, clave, token, tipo, estado";
     $valores = "'$user', '$clave',NULL, '$tipo',1";
 
-    $insertData = $conexion->query("INSERT INTO $tabla($campos) VALUES($valores)");
+    //$insertData = $conexion->query("INSERT INTO $tabla($campos) VALUES($valores)");
 ?>
-<?php if(insertData):?>
+<?php if($conexion->query("INSERT INTO $tabla($campos) VALUES($valores)")):?>
     <script>
         alert("Datos registrados...");
         $("#contenido").load("usuarios/principal.php");

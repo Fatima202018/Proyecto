@@ -6,7 +6,7 @@ function AccesoLogin($user, $passw)
 
     if ($data) {
         foreach ($data as $result) {
-            $idusuario = $result['idusuarios'];
+            $idusuario = $result['idusuario'];
             $hash = $result['clave'];
             $tipo = $result['tipo'];
             $estado = $result['estado'];
