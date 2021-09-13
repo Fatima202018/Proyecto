@@ -1,5 +1,5 @@
 <?php
-    class ConexionBD
+    class ConexBD
     {
         public function get_conexion()
         {
