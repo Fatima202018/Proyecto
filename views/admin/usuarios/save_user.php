@@ -1,8 +1,7 @@
 <?php
     include '../../../models/conexion.php';
-
-    $objeto = new ConexionBD();
-    $conexion = $objeto->get_conexion();
+    include '../../../controllers/procesos.php';
+    include '../../../models/procesos.php';
 
     $user = $_POST['user'];
 
@@ -14,16 +13,24 @@
     $campos = "usuario, clave, token, tipo, estado";
     $valores = "'$user', '$clave',NULL, '$tipo',1";
 
-    //$insertData = $conexion->query("INSERT INTO $tabla($campos) VALUES($valores)");
+    $query1 = "SELECT * FROM usuarios WHERE usuario = '$user'";
+    $query2 = "INSERT INTO $tabla($campos) VALUES ($valores)";
 ?>
-<?php if($conexion->query("INSERT INTO $tabla($campos) VALUES($valores)")):?>
+<?php if(CountReg($query1)!= 0):?>
     <script>
-        alert("Datos registrados...");
+        alertify.error("Usuario ya registrado intente con uno nuevo...");
         $("#contenido").load("usuarios/principal.php");
     </script>
 <?php else:?>
-    <script>
-        alert("Error al registrar los datos...");
-        $("#contenido").load("usuarios/principal.php");
-    </script>
+    <?php if(CRUD($query2,"i")):?>
+        <script>
+            alertify.success("Datos registrados...");
+            $("#contenido").load("usuarios/principal.php");
+        </script>
+    <?php else:?>
+        <script>
+            alert("Error al registrar los datos...");
+            $("#contenido").load("usuarios/principal.php");
+        </script>
+    <?php endif?>
 <?php endif?>
