@@ -53,8 +53,8 @@ $cont = 0;
                     <a href="" class="btn btn-success upd-user" data-toggle="modal" id-user="<?php echo $result['idusuario'];?>"><i class="fas fa-user-edit"></i></a>
                 </td>
                 <td>
-                    <a href="" class="btn btn-danger"> <i class="fas fa-user-times"></i></a>
-                </td>
+                <a href="" class="btn btn-danger exit-sys1" id-user="<?php echo $result['idusuario'];?>"> <i class="fas fa-user-times"></i> </a>
+                </td>>
                 <td>
                     <a href="" class="btn btn-dark upd-key" data-toggle="modal" id-user="<?php echo $result['idusuario'];?>"> <i class="fas fa-key"></i></a>
                 </td>

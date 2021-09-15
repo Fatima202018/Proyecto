@@ -67,4 +67,34 @@ $(document).ready(function () {
             });
         event.preventDefault();
     });
+    /* Eliminar Usuario */
+    $(".exit-sys1").click(function (event) {
+        var id, eliminar;
+        id = $(this).attr("id-user");
+        eliminar = $(this).attr("eliminar");
+        $("#result-form").load("usuarios/delete_usuario.php?idusuario=" + id + "&eliminar=" + eliminar);
+        event.preventDefault();
+    });
+
+    /* Actualizar Clave */
+    $("#UPDpass").on("submit", function (event) {
+        var tipo = document.getElementById("tipo-user").value;
+
+        var formData = new FormData(document.getElementById("UPDpass"));
+        formData.append("dato", "valor");
+
+        $.ajax({
+            url: "usuarios/upd_pass.php",
+            type: "POST",
+            dataType: "html",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false
+        })
+            .done(function (res) {
+                $("#result-form").html(res);
+            });
+        event.preventDefault();
+    });
 });
