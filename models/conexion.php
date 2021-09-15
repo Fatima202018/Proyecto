@@ -1,5 +1,5 @@
 <?php
-    class ConexionBD
+    class ConexBD
     {
         public function get_conexion()
         {
@@ -13,13 +13,13 @@
       }
       else
       {
-        $user ="poo";
-        $pass ="poo";
+        $user ="root";
+        $pass ="";
         $host ="localhost";
         $bd ="paw";
       }
       $conexion = new PDO("mysql:host=$host;dbname=$bd;", $user,$pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-       return $conexion;
+        return $conexion;
       }
     }
 
