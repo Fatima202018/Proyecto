@@ -81,8 +81,8 @@ $(document).ready(function () {
         var tipo = document.getElementById("tipo-user").value;
 
         var formData = new FormData(document.getElementById("UPDpass"));
-        formData.append("dato", "valor");
 
+        
         $.ajax({
             url: "usuarios/upd_pass.php",
             type: "POST",
