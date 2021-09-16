@@ -7,21 +7,20 @@
         //$conexion = $objeto->get_conexion();
     
         $idusuario = $_POST['idusuario'];
-        $user = $_POST['user'];
-        $tipo = $_POST['tipo_user'];
+        $clave = password_hash($_POST['clave'],PASSWORD_DEFAULT);
 
 ?>
 
-<?php if(CRUD("UPDATE usuarios SET usuario = '$user', tipo='$tipo' WHERE idusuario ='$idusuario'", "u")):?>
+<?php if(CRUD("UPDATE usuarios SET clave = '$clave' WHERE idusuario ='$idusuario'", "u")):?>
     <script>
-        alertify.success("Usuario actualizado...");
-        $('#UserUpd').modal('hide');
+        alertify.success("Clave Actualizado...");
+        $('#modalKeyUpd').modal('hide');
         $("#contenido").load("usuarios/principal.php");
     </script>
 <?php else:?>
     <script>
-        alertify.error("Error al actualizar usuario...");
-        $('#UserUpd').modal('hide');
+        alertify.error("Error al actualizar clave...");
+        $('#modalKeyUpd').modal('hide');
         $("#contenido").load("usuarios/principal.php");
     </script>
 <?php endif?>

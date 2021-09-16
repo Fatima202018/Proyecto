@@ -1,9 +1,9 @@
-.contenlogin{
+.contentlogin{
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+  }
 
 .login{
     width: 380px;
@@ -11,11 +11,5 @@
 
 .formlogin{
     background-color: #546e7a;
-     opacity: 0.6;
+    opacity: 0.6;
 }
-
-.CHead{
-    vertical-align: middle;
-    text-align: center;
-}
-
