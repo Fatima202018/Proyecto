@@ -1,3 +1,39 @@
+<?php
+    session_start();
+    include '../../../models/conexion.php';
+    include '../../../controllers/procesos.php';
+    include '../../../models/procesos.php';
+    
+    $cont = 0;
+    $pagina = 0;
+
+    if(isset($_GET['num']))
+    {
+        $pagina = $_GET['num'];
+    }
+
+    $registros = 1;
+
+    if(!$pagina)
+    {
+        $inicio = 0;
+        $pagina = 1;
+    }
+    else
+    {
+        $inicio = ($pagina -1)* $registros;
+    }
+
+    $query = "SELECT * FROM usuarios";
+
+    $dataUser = CRUD("SELECT * FROM usuarios ORDER BY idusuarios LIMIT 
+    $inicio,$registros", "s");
+
+    $num_registro = CountReg($query);
+    $paginas = ceil($num_registro/ $registros);
+
+?>
+
 <script src="../../public/js/funciones-navbar.js"></script>
 <script src="../../public/js/funciones-usuarios.js"></script>
 
@@ -40,6 +76,29 @@
 
                 <div class="col-md-8">
                     <?php include 'table_usuarios.php'; ?>
+                    <?php if($num_registro >$registros):?>
+                        <?php if($pagina == 1):?>
+                    <div style="text-aling: center;">
+                        <a href="" class="btn pagina" v-num="<?php echo ($pagina + 1);?>"
+                        num_reg="<?php echo $registros;?>">
+                            <i class="fas fa-arrow-alt-circle-right fa-2x"></i> 
+                        </a>
+                    </div>
+
+                        <?php elseif($pagina == $paginas): ?>
+                    <div style="text-aling: center;">
+                        <a href="" class="btn pagina" v-num="<?php echo ($pagina - 1);?>"
+                        num_reg="<?php echo $registros;?>">
+                            <i class="fas fa-arrow-alt-circle-left fa-2x"></i> 
+                        </a>
+                    </div>
+                        <?php else:?>
+                        <?php endif ?>
+                    
+                    <?php else: ?>
+                    <?php endif ?>
+
+                    <?php ?><?php ?>
                 </div>
             </div>
         </div>

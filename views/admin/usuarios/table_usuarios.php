@@ -1,12 +1,9 @@
-<?php
-    include '../../../models/conexion.php';
-    include '../../../controllers/procesos.php';
-    include '../../../models/procesos.php';
-
-    $dataUser = CRUD("SELECT * FROM usuarios;", "s");
-    $cont = 0;
-?>
-
+<style>
+    .cHead {
+        vertical-aling: middle;
+        text-aling: center;
+    }
+</style>
 <table class="table table-borderless table-responsive-xl">
     <thead class="bg-dark text-white">
         <tr>
@@ -18,8 +15,8 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach($dataUser AS $result):?>
-            <tr>
+    <?php foreach($dataUser AS $result):?>
+                <tr>
                 <td><?php echo $cont +=1;?></td>
                 <td><?php echo $result['usuario'];?></td>
                 <td>
@@ -61,6 +58,6 @@
                 <a href="" class="btn btn-dark upd-key" id-user="<?php echo $result['idusuario'];?>" data-toggle="modal"><i class="fas fa-key"></i></a>
                 </td>
             </tr>
-        <?php endforeach?>
+            <?php endforeach?>
     </tbody>
 </table>
