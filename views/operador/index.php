@@ -6,6 +6,7 @@
     $redic = new Rd();
     $redic->Operador();
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,6 +16,6 @@
     <title>Operador</title>
 </head>
 <body>
-    <h3><b>Bienvenido/a: <?php echo $user; ?></b></h3>
+    <h3><b>Bienvenido/a: <?php echo $user; ?> </b></h3>
 </body>
 </html>

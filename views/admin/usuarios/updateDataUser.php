@@ -43,5 +43,5 @@
             <?php endif?>
         </select>
     </div>
-    <button class="btn btn-primary">Actualizar</button>
+    <button class="btn btn-success">Actualizar</button>
 </form>
