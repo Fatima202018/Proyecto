@@ -13,6 +13,10 @@
         
         AccesoLogin($user, $passw);
     }
+    elseif(isset($_POST['olvide']))
+    {
+        header("Location: ../view/olvide_clave.php");
+    }
     else
     {
         header("Location: ../index.php");
