@@ -1,25 +1,27 @@
 <?php
-include '../models/conexion.php';
-include '../controllers/procesos.php';
-include '../models/procesos.php';
+include '../Models/conexion.php';
+include '../Controllers/prosesos.php';
+include '../Models/procesos.php';
 
 $user = $_POST['user'];
-$email = $_POST['email'];
+$email= $_POST['email'];
 
-$query1 = "SELECT COUNT(usuario) AS tuser FROM usuarios WHERE usuario = '$user'";
+$buscaUser = buscavalor("usuarios", "COUNT(usuario)","usuario = '$user'");
+$buscaEmail = buscavalor("usuarios","COUNT(usuario)","usuario = '$user' AND email = '$email'");
 
-$query1 = "SELECT COUNT(email) AS temail FROM usuarios WHERE usuario = '$user' AND email = '$email'";
+if($buscaUser != 0 AND $buscaEmail !=0){
+    $Token= Token(8);
+    Email($email,$Token);
 
-$buscaUser = CRUD($query1, "s");
-$buscaEmail = CRUD($query2, "s");
+    $update = CRUD("UPDATE usuarios SET token ='$Token' WHERE usuario='$user'","u");
 
-foreach($buscaUser AS $result)
-{
-    echo $contUser = $result['tuser'];
+    if($update)
+    {
+        header("Location: cambio_clave.php");
+    }else{
+
+    }
 }
+else{
 
-foreach($buscaEmail AS $result)
-{
-    echo $contEmail = $result['temail'];
 }
-?>

@@ -1,9 +1,8 @@
 <?php
-
-    function AccesoLogin($user, $passw)
+    function AccesoLogin($user,$passw)
     {
-        $consultas = new Login();
-        $data = $consultas->getDataUser($user);
+        $consulta = new login();
+        $data = $consulta->GetDataUser($user);
 
         if($data)
         {
@@ -12,14 +11,14 @@
                 $idusuario = $result['idusuario'];
                 $hash = $result['clave'];
                 $tipo = $result['tipo'];
-                $estado = $result['estado'];
+                $estado = $result['estado'];                
             }
 
             if($estado == 1)
             {
                 if(password_verify($passw,$hash))
                 {
-                    if($tipo == 1) //vista de Administrador
+                    if($tipo == 1) //vista admin
                     {
                         $_SESSION["idusuario"] = $idusuario;
                         $_SESSION["user"] = $user;
@@ -36,22 +35,18 @@
                 }
                 else
                 {
-                    header("Location: ../index.php?msj=".base64_encode
-                    ("Contraseña incorrecta ..."));
+                    header("Location:../index.php?msj=".base64_encode("Contraseña incorrecta..."));
                 }
             }
             else
             {
-                header("Location: ../index.php?msj=".base64_encode
-                ("El usuario no tiene permisos de acceso ..."));
+                header("Location:../index.php?msj=".base64_encode("El usuario no tiene permisos de acceso..."));
             }
         }
         else
-        {
-            header("Location: ../index.php?msj=".base64_encode
-            ("El usuario no existe ..."));
-        }
-        
+            {
+                header("Location:../index.php?msj=".base64_encode("El usuario no existe..."));
+            }
     }
 
     /*Funcion para realizar un CRUD(Crear,leer,actualizar,borrar)*/
@@ -69,6 +64,4 @@
         $data = $consultas->row_data($query);
         return $data;
     }
-
-
 ?>
